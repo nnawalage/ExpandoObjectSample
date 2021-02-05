@@ -44,8 +44,11 @@ namespace ExpandoObjectSample
             }
 
             var dynamicProperty = "lastName";
+
             var count = list.Count(g => g.Where(o=>o.Key== "firstName").Count()>0);
             var group = list.GroupBy(g => g.Where(o => o.Key == "lastName").Count() > 0).ToList();
+
+
             var newGroup= list.GroupBy(g => ((IDictionary<String, Object>)g)[dynamicProperty])
                         .Select(group => new {
                             GroupKey = group.Key,
